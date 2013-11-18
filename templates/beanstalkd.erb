@@ -1,0 +1,44 @@
+#
+# This file is managed by the puppet module: <%= @module_name %>
+# Any local changes will be overwritten during the next puppet run
+#
+
+# System configuration for the beanstalkd daemon
+
+# Available options correspond to the options to the
+# beanstalkd commandline.
+
+BEANSTALKD_ADDR=<%= @beanstalkd_addr %>
+BEANSTALKD_PORT=<%= @beanstalkd_port %>
+BEANSTALKD_USER=<%= @beanstalkd_user %>
+
+# Job size is left to the default. Uncomment and set it
+# to a value to have it take affect.
+#BEANSTALKD_MAX_JOB_SIZE=65535
+<% if @beanstalkd_max_job_size -%>
+BEANSTALKD_MAX_JOB_SIZE=<%= @beanstalkd_max_job_size %>
+<% end -%>
+
+# Using the binlog is off by default.
+#
+# The direcory to house the binlog.
+#BEANSTALKD_BINLOG_DIR=/var/lib/beanstalkd/binlog
+<% if @beanstalkd_binlog_dir -%>
+BEANSTALKD_BINLOG_DIR=<%= @beanstalkd_binlog_dir %>
+<% end -%>
+#
+# fsync the binlog at most once every N milliseconds.
+# setting this to 0 means 'always fsync'. If this is unset,
+# and the binlog is used, then no explicit fsync is ever
+# performed.  That is, the -F option is used.
+#BEANSTALKD_BINLOG_FSYNC_PERIOD=
+<% if @beanstalkd_binlog_fsync_period -%>
+BEANSTALKD_BINLOG_FSYNC_PERIOD=<%= @beanstalkd_binlog_fsync_period %>
+<% end -%>
+#
+# The size of each binlog file.  This is rounded
+# up to the nearest 512 byte boundary.
+#BEANSTALKD_BINLOG_SIZE=10485760
+<% if @beanstalkd_binlog_size -%>
+BEANSTALKD_BINLOG_SIZE=<%= @beanstalkd_binlog_size %>
+<% end -%>
