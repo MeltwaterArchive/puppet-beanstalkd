@@ -6,6 +6,7 @@ class beanstalkd (
   $package_ensure                 = 'present',
   $service_name                   = 'beanstalkd',
   $service_enable                 = true,
+  $service_mod_init               = false,
   $beanstalkd_addr                = '0.0.0.0',
   $beanstalkd_port                = '11300',
   $beanstalkd_user                = 'beanstalkd',
@@ -44,6 +45,17 @@ class beanstalkd (
         mode    => '0644',
         content => template("${module_name}/beanstalkd.erb"),
         notify  => Service[$service_name],
+      }
+    }
+
+    if $service_mod_init {
+      file { '/etc/init.d/beanstalkd':
+        owner  => 'root',
+        group  => 'root',
+        source => "puppet:///modules/${module_name}/beanstalkd",
+        mode   => '0755',
+        before => Service[$service_name],
+        notify => Service[$service_name],
       }
     }
 
