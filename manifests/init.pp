@@ -10,10 +10,10 @@ class beanstalkd (
   $beanstalkd_addr                = '0.0.0.0',
   $beanstalkd_port                = '11300',
   $beanstalkd_user                = 'beanstalkd',
-  $beanstalkd_max_job_size        = undef,
-  $beanstalkd_binlog_dir          = undef,
-  $beanstalkd_binlog_fsync_period = undef,
-  $beanstalkd_binlog_size         = undef,
+  $beanstalkd_max_job_size        = '120000000',
+  $beanstalkd_binlog_dir          = '/data/beanstalkd/',
+  $beanstalkd_binlog_fsync_period = '300000',
+  $beanstalkd_binlog_size         = '128000000',
 ) {
   validate_bool($manage_package)
   validate_string($package_name)
