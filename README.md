@@ -1,5 +1,9 @@
-puppet-beanstalkd
-=================
+[DEPRECATED] puppet-beanstalkd
+==============================
+
+NOTE: This repository is no longer maintained
+---------------------------------------------
+
 
 Puppet module for managing Beanstalkd
 
